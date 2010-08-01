@@ -5,10 +5,13 @@ use warnings;
 # This is the sub that displays the message
 my $diesub = sub {
     my ( $sub, $mod ) = @_;
+    my ( $package, $file, $line ) = caller;
     die( <<EOT );
-Can't locate $mod in your Perl library.  You may need to install it
-from CPAN or another repository.  Your library paths are:
+Can't locate $mod in \@INC (Your Perl library.) at $file line $line
+You may need to install it from CPAN or another repository.
+Your library paths are:
 @{[ map { "  $_\n" } grep { !ref($_) } @INC ]}
+at $file line $line
 EOT
 };
 

@@ -15,7 +15,7 @@ lives_ok {
 throws_ok {
     require Fake::Thing;
 }
-qr/Can't locate Fake\/Thing\.pm in your Perl library\./,
+qr/Can't locate Fake\/Thing\.pm in \@INC \(Your Perl library\.\)/,
 "Useful message";
 
 is( ref($INC[-1]), 'CODE' , "sub at end" );
